@@ -56,7 +56,8 @@ class SearchBar: UIView, UITextFieldDelegate {
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // Code
+        let content = ((textField.text ?? "") as NSString).replacingCharacters(in: range, with: string)
+        self.search(content)
         return true
     }
     // 搜索
@@ -70,7 +71,6 @@ class SearchBar: UIView, UITextFieldDelegate {
         return true
     }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.search(self.search_txf.text!)
         self.search_txf.resignFirstResponder()
         return true
     }
